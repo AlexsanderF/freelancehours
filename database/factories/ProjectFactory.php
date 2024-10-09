@@ -22,7 +22,7 @@ class ProjectFactory extends Factory
     {
         return [
             'title' => collect(fake()->words(5))->join(' '),
-            'description' => fake()->randomHtml(),
+            'description' => 'AQUI VAI O CONTEÚDO DA NOTICIA, FOI INSERIDO UM TEXTO ALEATORIO VIA FACTORY.',
             'ends_at' => fake()->dateTimeBetween('now', '+ 3 days'),
             'status' => fake()->randomElement(['open', 'closed']),
             'tech_stack' => fake()->randomElements(['js', 'nextjs', 'nodejs', 'react', 'vite'], random_int(1, 5)),
