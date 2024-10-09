@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\ProjectStatusEnum;
 use Database\Factories\ProjectFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +16,7 @@ class Project extends Model
     {
         return [
             'tech_stack' => 'array',
+            'status' => ProjectStatusEnum::class,
         ];
     }
 }
