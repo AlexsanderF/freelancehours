@@ -14,6 +14,8 @@ class Create extends Component
     public Project $project;
     public bool $modal = false;
 
+    public bool $agree = false;
+
     #[Rule(['required', 'email'])]
     public string $email = '';
 
@@ -23,6 +25,11 @@ class Create extends Component
     public function save(): void
     {
         $this->validate();
+
+        if (!$this->agree) {
+            $this->addError('agree', 'Você deve concordar com os termos de serviço e a política de privacidade');
+            return;
+        }
 
         $this->project->proposals()->updateOrCreate(
             ['email' => $this->email],
