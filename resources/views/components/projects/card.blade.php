@@ -42,7 +42,6 @@
     </div>
 
     <div class="pt-4 space-y-4">
-
         <div class="uppercase font-bold text-[#8C8C9A] text-[12px]">Publicado Por</div>
 
         <div class="flex gap-[8px] items-center">
@@ -60,8 +59,6 @@
                     @endforeach
                 </div>
             </div>
-
         </div>
-
     </div>
 </x-ui.card>
