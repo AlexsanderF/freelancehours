@@ -2,7 +2,7 @@
 
 <p align="center">
   <img alt="PHP version" src="https://img.shields.io/static/v1?label=php&message=8.3.11&color=18181B&labelColor=5354FD">
-    <img alt="Laravel version" src="https://img.shields.io/static/v1?label=laravel&message=11.9&color=18181B&labelColor=5354FD">
+    <img alt="Laravel version" src="https://img.shields.io/static/v1?label=laravel&message=11.26.0&color=18181B&labelColor=5354FD">
 </p>
 
 ## Projeto FreelanceHours
