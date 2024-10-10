@@ -6,14 +6,55 @@
         </a>
 
         <ul class="text-[#C3C3D1] flex items-center gap-4 text-[16px]">
-            <li class="hover:underline cursor-pointer"><a>Anunciar um projeto</a></li>
-            <li class="hover:underline cursor-pointer"><a href="/">Procurar um projeto</a></li>
-            <li class="hover:underline cursor-pointer"><a>Como funciona?</a></li>
+            <li class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                <a href="/">Procurar um projeto</a>
+            </li>
+
+            <li class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                <a href="/about">Como funciona?</a>
+            </li>
         </ul>
 
         <div class="flex items-center gap-4">
-            <x-ui.icons.profile class="w-8 h-8"/>
-            <x-ui.icons.burguer class="w-8 h-8"/>
+            @if (Route::has('login'))
+                <nav class="-mx-3 flex flex-1 justify-end">
+                    @auth
+
+                        <a
+                            href="{{ url('/newproject') }}"
+                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                        >
+                            Anunciar um projeto
+                        </a>
+
+                        <!-- Log out -->
+                        <form method="POST" action="{{ route('logout') }}"
+                              class="rounded-md px-3 py-2 text-red-600 ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-red-600 dark:hover:text-white/80 dark:focus-visible:ring-white">
+                            @csrf
+                            <button>
+                                {{ __('Log Out') }}
+                            </button>
+                        </form>
+
+                    @else
+                        <a
+                            href="{{ route('login') }}"
+                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                        >
+                            Logar
+                        </a>
+
+                        @if (Route::has('register'))
+                            <a
+                                href="{{ route('register') }}"
+                                class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                            >
+                                Registrar
+                            </a>
+                        @endif
+                    @endauth
+                </nav>
+            @endif
         </div>
     </div>
 </nav>
