@@ -26,7 +26,7 @@ class Proposals extends Component
     }
 
     #[Computed]
-    public function lastProposalTime()
+    public function lastProposalTime(): string
     {
         return $this->project->proposals()
             ->latest()
