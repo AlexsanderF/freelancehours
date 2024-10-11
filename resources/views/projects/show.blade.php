@@ -5,5 +5,3 @@
         <livewire:projects.proposals :project="$project"/>
     </div>
 </x-layouts.app>
-
-
