@@ -16,7 +16,14 @@
               enctype="multipart/form-data">
             @csrf
 
-            <textarea>
+            <div class="p-3">
+                <x-input-label for="title" :value="__('title Project')"/>
+                <x-text-input id="title" name="title" type="text" class="mt-1 block w-full" required autofocus
+                              autocomplete="title"/>
+                <x-input-error class="mt-2" :messages="$errors->get('title')"/>
+            </div>
+            <hr class="mb-4 bg-[#10101E] divide-[#1E1E2C] divide-y rounded-[10px] border-[#1E1E2C] border">
+            <textarea name="content" id="content">
 
             </textarea>
 
