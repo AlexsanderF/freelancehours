@@ -14,4 +14,12 @@ enum ProjectStatusEnum: string
             self::Closed => 'Encerrado',
         };
     }
+
+    public function status(): string
+    {
+        return match ($this) {
+            self::Open => 'ABERTO',
+            self::Closed => 'FECHADO',
+        };
+    }
 }
