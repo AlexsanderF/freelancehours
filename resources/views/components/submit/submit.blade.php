@@ -16,12 +16,23 @@
               enctype="multipart/form-data">
             @csrf
 
-            <div class="p-3">
-                <x-input-label for="title" :value="__('title Project')"/>
-                <x-text-input id="title" name="title" type="text" class="mt-1 block w-full" required autofocus
-                              autocomplete="title"/>
-                <x-input-error class="mt-2" :messages="$errors->get('title')"/>
+            <div class="p-3 flex space-x-4">
+                <div class="w-4/5">
+                    <x-input-label for="title" :value="__('Title Project')"/>
+                    <x-text-input id="title" name="title" type="text" class="mt-1 w-full p-3" required autofocus
+                                  autocomplete="title"/>
+                    {{--                    <x-input-error class="mt-2" :messages="$errors->get('title')"/>--}}
+                </div>
+                <div class="w-2/5">
+                    <x-input-label for="description" :value="__('Time for Project')"/>
+
+                    <x-bladewind::datepicker required="true" name="date_end" format="dd-mm-yyyy"
+                                             placeholder="dd-mm-yyyy"
+                                             class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm text-black mt-1 w-full"/>
+                </div>
             </div>
+
+
             <hr class="mb-4 bg-[#10101E] divide-[#1E1E2C] divide-y rounded-[10px] border-[#1E1E2C] border">
             <textarea name="content" id="content">
 
@@ -69,6 +80,7 @@
                         </div>
                     </div>
                 </div>
+                <input type="hidden" id="created_by" name="created_by" value="{{ $authenticated->id }}">
                 <div>
                     <div class="m-5">
                         <button type="submit" class="bg-[#5354FD] text-white font-bold tracking-wide uppercase px-8 py-3 rounded-[4px]

@@ -7,6 +7,10 @@
     <script src="https://cdn.tiny.cloud/1/lpocjyv6hjjeo56eqbhq7608bilzv58w7805nz3n3mrx0xxk/tinymce/7/tinymce.min.js"
             referrerpolicy="origin"></script>
 
+    <link href="{{ asset('vendor/bladewind/css/animate.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('vendor/bladewind/css/bladewind-ui.min.css') }}" rel="stylesheet"/>
+
+
     <title>{{ $title ?? 'Page Title' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -39,5 +43,6 @@
         ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
     });
 </script>
+<script src="{{ asset('vendor/bladewind/js/helpers.js') }}"></script>
 </body>
 </html>

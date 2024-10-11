@@ -1,6 +1,7 @@
 {
     "Hours": "Horas ",
-    "title Project": "Título do Projeto",
+    "Title Project": "Título do Projeto",
+    "Time for Project": "Tempo do Projeto",
     "(and :count more error)": "(e mais :count erro)",
     "(and :count more errors)": "(e mais :count erros)",
     "A fresh verification link has been sent to your email address.": "Um novo link de verificação foi enviado para seu e-mail",
