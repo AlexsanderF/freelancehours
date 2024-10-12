@@ -17,7 +17,7 @@ class SubmitProjectsController extends Controller
 
     public function index(): View|Factory|Application
     {
-        $projects = Project::where('created_by', Auth::id())->paginate($this->itemPerPage);
+        $projects = Project::where('created_by', Auth::id())->orderBy('created_at', 'desc')->paginate($this->itemPerPage);
 
         $authenticated = Auth::user();
 

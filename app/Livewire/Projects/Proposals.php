@@ -26,13 +26,13 @@ class Proposals extends Component
     }
 
     #[Computed]
-    public function lastProposalTime(): string
+    public function lastProposalTime(): ?string
     {
-        return $this->project->proposals()
+        $proposal = $this->project->proposals()
             ->latest()
-            ->first()
-            ->created_at
-            ->diffForHumans();
+            ->first();
+
+        return $proposal ? $proposal->created_at->diffForHumans() : null;
     }
 
     public function loadMore(): void

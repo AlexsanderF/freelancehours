@@ -20,8 +20,11 @@
                 <div class="flex justify-between items-center">
                     <div class="flex items-center space-x-2">
                         <div>
-                                <span
-                                    class='bg-{{ $item->status->status() === 'ABERTO' ? 'green' : 'red' }}-50 text-{{ $item->status->status() === 'ABERTO' ? 'green' : 'red' }}-600 text-xs font-medium mr-2 px-1.5 rounded py-1'>{{ $item->status->status()}}</span>
+                            @if($item->status->status() !== 'ABERTO')
+                                <x-bladewind::tag label="FECHADO" color="red"/>
+                            @elseif($item->status->status() !== 'FECHADO')
+                                <x-bladewind::tag label="ABERTO" color="green"/>
+                            @endif
                         </div>
                         <div>
                             <div class="text-white text-[14px] font-bold tracking-wide truncate w-[140px]">
@@ -32,11 +35,10 @@
                             </div>
                         </div>
                     </div>
-                    {{--                    <div--}}
-                    {{--                        class="whitespace-nowrap uppercase font-bold text-[#C3C3D1] flex items-center space-x-2 px-[8px] py-[4px] rounded-full bg-[#181826] border border-[#1E1E2C] text-[12px]">--}}
-                    {{--                        <x-ui.icons.clock class="w-[18px] h-[18px]"/>--}}
-                    {{--                        --}}
-                    {{--                    </div>--}}
+                    <div class="text-center">
+                        <x-bladewind::dropmenu trigger="cog-6-tooth-icon">
+                        </x-bladewind::dropmenu>
+                    </div>
                 </div>
             @endforeach
         </div>

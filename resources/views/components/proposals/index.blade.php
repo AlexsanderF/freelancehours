@@ -16,9 +16,15 @@
 
     <div class="py-4">
         <div class="flex flex-col gap-7">
-            @foreach($proposals as $proposal)
+            @forelse($proposals as $proposal)
                 <x-proposals.item :$proposal :position="$loop->index"/>
-            @endforeach
+            @empty
+                <x-bladewind::empty-state
+                    message="Não existe proposta para este projeto"
+                    button_label="Envie sua proposta"
+                    onclick="url('/')">
+                </x-bladewind::empty-state>
+            @endforelse
         </div>
 
         @if($proposals->hasMorePages())

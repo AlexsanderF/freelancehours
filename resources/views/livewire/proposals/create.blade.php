@@ -66,17 +66,30 @@
                 <p class="text-red-500 text-[12px]">{{ $message }}</p>
                 @enderror
             </div>
-
-            <button class="bg-[#5354FD] text-white font-bold tracking-wide uppercase px-8 py-3 rounded-[4px]
+            @if(\Illuminate\Support\Facades\Auth::id())
+                @if($project->created_by !== \Illuminate\Support\Facades\Auth::id())
+                    <button class="bg-[#5354FD] text-white font-bold tracking-wide uppercase px-8 py-3 rounded-[4px]
                     hover:bg-[#1f20a6] transition duration-300 ease-in-out w-full">
-                Enviar uma proposta
-            </button>
+                        Enviar uma proposta
+                    </button>
+                    <div class="flex justify-center space-x-2">
+                        <x-ui.icons.secure class="w-6 h-6 text-[#5354FD]"/>
+                        <span>Suas informações estão seguras.</span>
+                    </div>
+                @elseif($project->created_by == \Illuminate\Support\Facades\Auth::id())
+                    <div class="flex justify-center space-x-2">
+                        <x-ui.icons.x class="w-10 h-10 text-[#5354FD]"/>
+                        <span class="text-red-600">Você não pode enviar uma proposta para o seu próprio projeto.</span>
+                    </div>
+                @endif
+            @elseif(!\Illuminate\Support\Facades\Auth::id())
+                <x-bladewind::button
+                    outline="true" tag="a" href="{{ route('submitprojects.index') }}"
+                    class="flex justify-center items-center text-center">
+                    Login
+                </x-bladewind::button>
+            @endif
         </form>
-
-        <div class="flex justify-center space-x-2">
-            <x-ui.icons.secure class="w-6 h-6 text-[#5354FD]"/>
-            <span>Suas informações estão seguras.</span>
-        </div>
     </x-ui.modal>
 
 </div>

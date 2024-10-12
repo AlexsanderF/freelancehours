@@ -22,7 +22,6 @@
                     <x-input-label for="title" :value="__('Title Project')"/>
                     <x-text-input id="title" name="title" type="text" class="mt-1 w-full p-3" required autofocus
                                   autocomplete="title"/>
-                    {{--                    <x-input-error class="mt-2" :messages="$errors->get('title')"/>--}}
                 </div>
                 <div class="w-2/5">
                     <x-input-label for="description" :value="__('Time for Project')"/>
