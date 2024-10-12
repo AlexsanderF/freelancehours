@@ -37,7 +37,31 @@ class SubmitProjectsController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
+        $request->validate([
+            'title' => 'required',
+            'date_end' => 'required',
+            'content' => 'required',
+            'technologies' => 'required',
+            'created_by' => 'required',
+        ]);
+
+        if ($request->created_by != Auth::id()) {
+            return redirect()->back()->withErrors('Você não está autorizado a executar esta ação.');
+        }
+
+        $create = (new Project())->createProject($request->only([
+            'title',
+            'date_end',
+            'content',
+            'technologies',
+            'created_by',
+        ]));
+
+        if (!$create) {
+            return redirect()->back()->withErrors('Erro ao criar projeto!');
+        }
+
+        return redirect()->back()->with('success', 'Projeto criado com sucesso!');
     }
 
     public function edit()

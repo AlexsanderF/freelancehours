@@ -1,4 +1,5 @@
 <x-ui.card class="col-span-2 ">
+    <x-bladewind::notification/>
     <div class="flex items-start justify-between pb-4">
         <div class="flex flex-col gap-[16px]">
             <h1 class="text-[28px] text-white leading-9">
@@ -93,3 +94,17 @@
         </form>
     </div>
 </x-ui.card>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Capturando a mensagem de sucesso da sessão
+        @if (session('success'))
+        showNotification("Sucesso", "{{ session('success') }}", "success", 10);
+        @endif
+        // Capturando a mensagem de erro da sessão
+        @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        showNotification("Erro", "{{ $error }}", "error", 10);
+        @endforeach
+        @endif
+    });
+</script>

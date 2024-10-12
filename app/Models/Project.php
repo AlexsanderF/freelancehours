@@ -28,7 +28,7 @@ class Project extends Model
     public function setEndsAtAttribute($value): void
     {
         if ($value) {
-            $this->attributes['date_emission'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
+            $this->attributes['ends_at'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
         }
     }
 
@@ -41,11 +41,12 @@ class Project extends Model
             self::create([
                 'title' => $project['title'],
                 'description' => $project['content'],
-                'ends_at',
+                'ends_at' => $project['date_end'],
                 'tech_stack' => $project['technologies'],
-                'created_by'
+                'created_by' => $project['created_by'],
             ]);
 
+            DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();
             return false;
