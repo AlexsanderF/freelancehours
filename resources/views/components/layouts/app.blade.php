@@ -9,7 +9,7 @@
 
     <link href="{{ asset('vendor/bladewind/css/animate.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('vendor/bladewind/css/bladewind-ui.min.css') }}" rel="stylesheet"/>
-
+    @livewireScripts
 
     <title>{{ $title ?? 'Page Title' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
